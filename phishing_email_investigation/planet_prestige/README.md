@@ -1,8 +1,9 @@
 # BTLO - The Planet Prestige Challenge
 
 ## Overview
-- This write-up is about documenting the email that I investigated, and I found some suspicious information. I found out that there are some encoded texts with base64, and this email has a file pretending to be a PDF file. I used CyberShef to decode the text file and found out that it's a zip file, it has three files, which I don't know the filextensions. The following steps show how I did my investigation.
 
+- This write-up documents my investigation of a suspicious email. During the analysis, I identified several indicators that suggested malicious intent. The email contained encoded text using Base64, and the attached file—while claiming to be a PDF—did not match typical PDF characteristics. After decoding the text with CyberChef, I discovered that the supposed PDF was actually a ZIP archive containing three files with unknown or misleading extensions. The following steps outline the process I used during my investigation and the findings I uncovered.
+  
 ## Tools Used
 
 - NotePad++
@@ -15,21 +16,21 @@
 ## Email Analysis
 
 1. From: "Bill" <billjobs@microapple.com>
-- This is not a legitimate email; the email is spoofed and uses MicroApple, and the attacker used famous companies' names for the email.
+- This email is not legitimate. It is a spoofed message that uses the name “MicroApple,” and the attacker is impersonating well-known companies to make the email appear authentic.
 2. spf=fail (google.com: domain of billjobs@microapple.com does not designate 93.99.104.210 as permitted sender)
-- Google detected that this is an unauthorized email and a spoofed email.
+- Google flagged this message as both unauthorized and spoofed, indicating that it did not originate from the sender it claims to represent.
 3. Received: from localhost (emkei.cz. [93.99.104.210])
-- Emkei.cz is a famous email spoofing website, used by scammers to send fake emails.
+- Emkei.cz is a well-known email spoofing service commonly used by scammers to send fraudulent or impersonated messages.
 4. Reply-To: negeja3921@pashter.com
-- This reply is going to a different email which means attackers real address, instead of "billjobs@microapple.com". This is suspicious.
+- The reply-to address points to a different email than “billjobs@microapple.com,” likely revealing the attacker’s actual address. This discrepancy is another clear indicator of suspicious activity.
   
  <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%201.png?raw=true">
  
-## CyberShef/File Signatures
+## Analysis Using CyberChef and File Signatures
 
-- I used CyberShef to decode the encoded text in the email to know the hidden information.
-- Used operation Hex to decode the first 4 bytes magic numbers and to see which file extension by using File Signature.
-- Found that the second base64 text is a zip file using File Signature, which can be extracted on a computer.
+- I used CyberChef to decode the Base64-encoded text in the email to reveal the hidden information.
+- I applied the Hex operation to analyze the first four bytes (magic numbers) in order to identify the file type using known file signatures.
+- Through file signature analysis, I determined that the second Base64-encoded block was actually a ZIP archive, which could be extracted on a computer.
 
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%202.png?raw=true">
 
@@ -38,20 +39,20 @@
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%205.png?raw=true">
 
 
-## Analysing The Files
+## File Analysis
 
-- I used the HXD Tool to analyse the files. Attackers often send files without an extension to confuse the victim.
-- Opened the Excel file using the Microsoft Excel website and noticed that some suspicious text in the Excel. I cleared the format and found that base64 text is there.
+- I used the HxD tool to analyze the files. Attackers often send files without extensions to confuse or mislead the victim, making it harder to immediately identify the file type.
+- I opened the Excel file using the Microsoft Excel web viewer and observed suspicious content within the sheet. After clearing the formatting, I discovered hidden Base64 text embedded in the file.
 
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%204.png?raw=true">
 
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%206.png?raw=true">
 
 
-## Viewing the Metadata of PDF a File
+## PDF Metadata Analysis
 
-- I used the Exftool tool to view the metadata of the GoodJobMayor.pdf file, using PowerShell.
-- The metadata revealed the details such as attacker name.
+- I used the ExifTool utility in PowerShell to examine the metadata of the file named GoodJobMayor.pdf.
+- The metadata revealed additional details, including information that appears to expose the attacker’s name.
 
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%207.png?raw=true">
 
@@ -61,13 +62,13 @@
 
 ## What I Learned
 
-- Email spoofing is easy to do. Attackers often use fake names, fake domains, and use fake email generators like emkei.cz to make emails look real.
-- SPF fail is a strong indicator of a fake email, which means it did not come from a trusted server.
-- Base64 is commonly used by attackers to hide information.
-- File extension cannot be trusted, because the file can pretend to be a PDF file, but it could be a ZIP file, and it's not safe to open.
-- Hex editors like HXD are extremely useful to identify what type of file it is.
-- Metadata can reveal important information such as author, creation date, etc.
-- Cybershef is a powerful tool for decoding the text.
+- Email spoofing is easy to perform. Attackers often use fake names, fake domains, and spoofing services such as emkei.cz to make malicious emails appear legitimate.
+- An SPF failure is a strong indicator of a spoofed or unauthorized email, showing that the message did not originate from a trusted mail server.
+- Base64 encoding is commonly used by attackers to conceal malicious content or hide data inside emails and attachments.
+- File extensions cannot be trusted, as a file may appear to be a PDF but could actually be a ZIP archive or another file type, making it unsafe to open without verification.
+- Hex editors such as HxD are extremely useful for identifying file types based on their hexadecimal signatures and magic numbers.
+- Metadata can reveal valuable information, including the author, creation date, and other details that may help identify the attacker.
+- CyberChef is a powerful tool for decoding, analyzing, and transforming encoded or obfuscated data.
 
   
   
