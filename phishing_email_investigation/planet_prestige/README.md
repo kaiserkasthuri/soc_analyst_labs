@@ -28,10 +28,10 @@
  
 ## Analysis Using CyberChef and File Signatures
 
-- I used CyberChef to decode the Base64-encoded blocks found in the email.
-- Using the Hex operation, I examined the first four bytes (magic numbers) of the decoded content to identify the file type based on known signatures.
-- The second Base64 block was identified as a ZIP archive rather than a PDF, confirming the attachment was intentionally disguised.
-
+- I used CyberShef to decode base64 text and discover the hidden information.
+- I used the CyberShef Hex operator to decode the content and found the first four bytes (Magic Numbers). 
+- With the help of magic numbers, I used file signatures to determine what kind of file it is. The attacker claimed that it's a PDF file, but the File Signatures website has helped me to find out that it’s a ZIP archive file.
+  
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%202.png?raw=true">
 
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%203.png?raw=true">
@@ -41,8 +41,8 @@
 
 ## File Analysis
 
-- I used HxD to examine the extracted files. Attackers often remove or alter file extensions to conceal the true file type.
-- One of the files opened in Excel showed suspicious, unreadable content. After removing the cell formatting, I found hidden Base64 text embedded in the sheet—another clear sign of obfuscation.
+- I used HxD to examine the extracted files. Attackers usually remove the file extension to confuse the victim. So the victim unknowingly opens the file and executes malware on the system.
+- One of the files opened in Excel showed suspicious, unreadable content. After removing the cell formatting, I found that hidden Base64 text is in sheet 3.
 
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%204.png?raw=true">
 
@@ -51,8 +51,8 @@
 
 ## PDF Metadata Analysis
 
-- I used ExifTool in PowerShell to inspect the metadata of the file GoodJobMayor.pdf.
-- The metadata revealed additional information, including details that may indicate the attacker’s alias or identity.
+- I used exiftool in PowerShell to view the metadata of the GoodJobMajor.pdf file.
+- The metadata revealed so much information, including the author's name, file access date, creation date, and the attacker's real name.
 <img src="https://github.com/ImanKasthuri/soc_analyst_labs/blob/main/phishing_email_investigation/planet_prestige/screenshots/Screenshot%207.png?raw=true">
 
 ## Commands Used
@@ -61,14 +61,13 @@
 
 ## What I Learned
 
-- Email spoofing is easy to perform, especially with services like Emkei.cz. Attackers often use fake names and domains to make malicious emails appear legitimate.
-- SPF failures are strong indicators of a spoofed or unauthorized email and should always be investigated.
-- Base64 encoding is frequently used to hide malicious content or embedded data.
-- File extensions cannot be trusted—files may be disguised as PDFs but actually contain ZIP archives or other dangerous formats.
-- Hex editors such as HxD are essential for identifying file types using hexadecimal signatures and magic numbers.
-- Metadata analysis can reveal useful details about file authorship, timestamps, and potential attacker information.
-- CyberChef is a powerful and flexible tool for decoding, analyzing, and transforming encoded or obfuscated data.
-
+- I learned that attackers used various methods to do email spoofing, for example use of fake email generators like emkei.cz, to make fake domains for emails to convince it’s legitimacy.
+- SPF failure is one of the biggest red flags that the email is spoofed or unauthorized, and should always be investigated.
+- Base64 encoding is frequently used to hide malicious content and embedded data.
+- File extensions cannot be trusted, because some of the files claimed to be safe, but they could be zip archives or other dangerous formats.
+- HxD hex editor is essential to identify the file type using magic numbers.
+- Metadata analysis can reveal useful details about file authorship, timestamp, and attackers' names or information.
+- CyberShef is a powerful tool for decoding and analyzing encoded data.
   
 
   
