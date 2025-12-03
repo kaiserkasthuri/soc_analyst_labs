@@ -52,7 +52,7 @@ I used IP Location.Net website to check origin country.
 
 And also used PowerShell command to find the origin country
 
-```Invoke-RestMethod "https://ipinfo.io/113.161.192.227//json```
+```Invoke-RestMethod "https://ipinfo.io/113.161.192.227//json"```
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a6088f34-9763-44f2-bcee-af0aa40423e1" />
 
