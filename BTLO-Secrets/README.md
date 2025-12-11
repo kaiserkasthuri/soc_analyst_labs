@@ -57,7 +57,7 @@ I used Hashcat to brute-force the JWT secret. First, I saved the token inside a 
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/c693fa81-96e9-405a-980f-27c9d84585de" />
 
-### Can you generate a new verified signature ticket with a low privilege?
+### #5) Can you generate a new verified signature ticket with a low privilege?
 
 I used JWT.io to generate a new JWT. For the challenge, I updated the payload and set "admin": false so the token would represent a low-privilege user before re-signing it with the secret.
 
