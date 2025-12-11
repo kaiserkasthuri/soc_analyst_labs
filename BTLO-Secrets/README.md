@@ -32,6 +32,7 @@ The JWT consists of three parts, and they are always separated by dots:
 
 #### Payload 
 ```{"flag":"BTL{_4_Eyes}","iat":90000000,"name":"GreatExp","admin":true}```
+
 -``` name: "GreatExp"``` - This is the username the token belongs to.
 - ```admin: true``` - This is the main issue. It means the token grants administrator privileges. Anyone who possesses this token is treated as an admin, even without a password, and can perform high-privilege actions.
 
