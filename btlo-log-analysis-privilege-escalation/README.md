@@ -55,6 +55,10 @@ After they were done with their work, they deleted it because:
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/61aab1f9-6c2c-4ada-85a4-924209a01d81" />
 
+## Conclusion
+
+Working through this lab helped me see how an attacker can slowly take control of a system without logging in normally. By looking at the bash history, I was able to follow what the attacker did step by step and understand how they moved from uploading a file to gaining root access. This lab made it clear how dangerous small misconfigurations, like an SUID-enabled Python binary, can be. It also helped me get better at thinking through an attack from a defender’s point of view and understanding what to look for during an investigation.
+
 
 
 
