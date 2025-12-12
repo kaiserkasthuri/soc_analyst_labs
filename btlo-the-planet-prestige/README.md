@@ -24,7 +24,7 @@
 4. Reply-To: negeja3921@pashter.com
 – The reply is directed to a different address instead of the “from” address, which is suspicious. This is the real email address the attacker uses to receive replies.
   
- <img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%201.png?raw=true">
+ <img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%201.png?raw=true">
  
 ## Analysis Using CyberChef and File Signatures
 
@@ -32,11 +32,11 @@
 -I used the CyberChef Hex operator to decode the content and identified the first four bytes (magic numbers).
 - Using the magic numbers, I checked the file signatures to determine what type of file it actually was. Although the attacker claimed it was a PDF file, the File Signatures website helped me confirm that it was actually a ZIP archive.
   
-<img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%202.png?raw=true">
+<img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%202.png?raw=true">
 
-<img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%203.png?raw=true">
+<img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%203.png?raw=true">
 
-<img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%204.png?raw=true">
+<img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%204.png?raw=true">
 
 
 ## File Analysis
@@ -44,16 +44,16 @@
 - I used HxD to examine the extracted files. Attackers often remove file extensions to confuse the victim, causing them to unknowingly open the file and execute malware on their system.
 - One of the files opened in Excel contained suspicious, unreadable content. After removing the cell formatting, I found hidden Base64 text in Sheet 3.
 
-<img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%205.png?raw=true">
+<img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%205.png?raw=true">
 
-<img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%206.png?raw=true">
+<img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%206.png?raw=true">
 
 
 ## PDF Metadata Analysis
 
 - I used exiftool in PowerShell to view the metadata of the GoodJobMajor.pdf file.
 - The metadata revealed a lot of information, including the author’s name, the file access date, the creation date, and the attacker’s real name.
-<img src="https://github.com/imankasthuri/soc_analyst_labs/blob/main/BTLO-The-Planet-Prestige/screenshots/Screenshot%207.png?raw=true">
+<img src="https://github.com/imankasthuri/soc-analyst-labs/blob/main/btlo-the-planet-prestige/screenshots/Screenshot%207.png?raw=true">
 
 ## Commands Used
 
