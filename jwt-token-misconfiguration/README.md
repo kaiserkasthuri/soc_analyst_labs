@@ -1,4 +1,5 @@
-# BTLO Secrets
+# JWT Token Misconfiguration
+> This investigation was completed as part of a hands-on lab from Blue Team Labs Online (BTLO).
 ## Senario
 
 <img width="1736" height="472" alt="image" src="https://github.com/user-attachments/assets/599a04c7-99dc-471e-8828-0401d83e9d04" />
