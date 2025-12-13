@@ -1,4 +1,5 @@
-# BTLO Log Analysis Privilege Escalation
+# Windows Previlege Escalation Analysis
+> This investigation was completed as part of a hands-on lab from Blue Team Labs Online (BTLO).
 
 ## Senario 
 
